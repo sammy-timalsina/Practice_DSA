@@ -24,7 +24,8 @@ namespace Practice_DSA.DPs
         }
         public void getFunction()
         {
-            //Prob2.Amazon Academy recently organized a scholarship test on its platform. A total of n students participated in the test.
+            //Prob2.Amazon Academy recently organized a scholarship test on its platform.
+            //A total of n students participated in the test.
             //Each student received a unique roll number,i.Each student’s rank is stored at rank[i].Each student gets a unique rank, so the rank is a permutation of values 1 through n.
             //For improved collaboration, the students are to be divided into groups. Use the following rules to find the imbalance in a group of students.
             //A group has k students where 1 <= k <= n.Groups are formed of k students in the ranks with consecutive roll numbers i.e I, (i + 1)..(i + k - 1)

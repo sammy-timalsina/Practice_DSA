@@ -8,6 +8,9 @@ namespace Practice_DSA.Stacks
 {
     public partial class cStack
     {
-
+        public cStack()
+        {
+            qu2 = new Queue<int>();
+        }
     }
 }
