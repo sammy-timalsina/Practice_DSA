@@ -27,47 +27,35 @@ namespace Practice_DSA.BinaryTrees
         }
         public bool IsCousins(TreeNode root, int x, int y)
         {
-            //find height of a tree first
+            //step1: find height
             int ht = HtOfaTree(root);
-            //look for first level if int x is there
-            //if yes return true;
-            //caputer index of that level
-            //and break from the loop
-            int lv = getLevelForRootVal(root, ht, x);
-            int rv = getLevelForRootVal(root, ht, y);
-            if(Math.Abs(lv-rv)==0)
+            for(int i=ht;i>0;i--)
             {
-                return true;
+                bool IsCousinX = IsCousinOnThisLevel(root, x, ht);
+                bool IsCousinY = IsCousinOnThisLevel(root, y, ht);
+                if(IsCousinX && IsCousinY)
+                {
+                    return true;
+                }
             }
             return false;
         }
-        private int getLevelForRootVal(TreeNode root,int ht, int x)
-        {
-            int lv = -1;
-            for (int i = ht; i > 0; i--)
-            {
-                if (IsCousinsHelper(root, x, i))
-                {
-                    lv = i;
-                    return lv;
-                }
-            }
-            return lv;
-        }
-        public bool IsCousinsHelper(TreeNode root,int x, int level)
+        private bool IsCousinOnThisLevel(TreeNode root, int x, int level)
         {
             if(root == null)
+                return false;   
+            if (level == 1)
             {
+                if (x == root.val)
+                {
+                    return true;
+                }
                 return false;
-            }
-            if (level == 1 && root.val == x)
-            {
-                return true;
             }
             else
             {
-              return IsCousinsHelper(root.left, x, level - 1)||
-                IsCousinsHelper(root.right, x, level - 1);
+               return IsCousinOnThisLevel(root.left, x, level - 1)||
+                IsCousinOnThisLevel(root.right, x, level - 1);
             }
         }
     }

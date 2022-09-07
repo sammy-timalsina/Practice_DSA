@@ -30,6 +30,14 @@ namespace Practice_DSA.BackTrackings
             //Explanation: products sorted lexicographically = ["mobile", "moneypot", "monitor", "mouse", "mousepad"]
             //After typing m and mo all products match and we show user["mobile", "moneypot", "monitor"]
             //After typing mou, mous and mouse the system suggests["mouse", "mousepad"]
+            string[] str = new string[] { "mobile", "moneypot", "monitor", "mouse", "mousepad" };
+            string s1 = "for";
+            string s2 = "geeksforgeeks";
+            var x = s2.Contains(s1);
+            string s11 = "for";
+            string s22 = "geeksfgoereks";
+            var x1 = s22.Contains(s11);
+            Array.Sort(str);
 
         }
         private IList<IList<string>> SuggestedProducts(string[] products, string searchWord)

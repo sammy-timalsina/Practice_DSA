@@ -1,7 +1,7 @@
 ﻿using Practice_DSA.BackTrackings;
-using Practice_DSA.BinarySearches;
 using Practice_DSA.BinaryTrees;
 using Practice_DSA.DPs;
+using Practice_DSA.Graphs;
 using Practice_DSA.LinkedLists;
 using Practice_DSA.Maps;
 using Practice_DSA.Recursions;
@@ -16,34 +16,41 @@ namespace Practice_DSA
     {
         static void Main(string[] args)
         {
-            BinarySearch bs = new BinarySearch();
-            bs.Search(new int[] { -8,-4,-3, 0, 3, 5, 9, 12,89 },1);
-           // SlidingWindowProbs();
+            graphProblems();
+            // BinarySearch bs = new BinarySearch();
+            //   bs.Search(new int[] { -8,-4,-3, 0, 3, 5, 9, 12,89 },1);
+            // SlidingWindowProbs();
             //binary Tree problems
-            // BinaryTreeProblems();
+            //  BinaryTreeProblems();
             //LinkedListProblems();
-            //StackProblems();
-            // StringProblems();
+            // StackProblems();
+            //   StringProblems();
             // MapProblems();
             //Recursions
             // RecursionProblems();
             //BackTracking
-             BackTrackingProblems();
+            // BackTrackingProblems();
             // DynamicProgramming();
             // dynamicProgrammingProblems();
         }
-
+        private static void graphProblems()
+        {
+            Graph graph = new Graph();
+            graph.testCaseForBFSOfGraph();
+        }
         private static void SlidingWindowProbs()
         {
             SlidingWindow sliding = new SlidingWindow();
-            double val =  sliding.FindMaxAverage(new int[]{1, 12, -5, -6, 50, 3},4);
-           // sliding.testCaseForMinSwapRequiredToGroupAll1Together();
+            double val = sliding.FindMaxAverage(new int[] { 1, 12, -5, -6, 50, 3 }, 4);
+            // sliding.testCaseForMinSwapRequiredToGroupAll1Together();
         }
 
         private static void BinaryTreeProblems()
         {
 
             BinaryTree bt = new BinaryTree();
+            // bt.testCaseForPathSum();
+            bt.testCaseForMaxLevelSum();
             bt.TestCaseIsCousin();
             bt.TestCaseAverageLevel();
         }
@@ -59,7 +66,8 @@ namespace Practice_DSA
         private static void StackProblems()
         {
             cStack cs = new cStack();
-
+            cs.testCaseForLargestRectangle();
+            cs.testCaseForNearestGreaterToRight();
             cs.Push(2);
             cs.Push(5);
             cs.Push(100);
@@ -73,6 +81,8 @@ namespace Practice_DSA
         private static void StringProblems()
         {
             StringNArray str = new StringNArray();
+            str.testCaseToHex();
+            str.testCaseForWordPattern();
             bool fs = str.IsIsomorphic("foo", "bar");
             //  BigInteger bt = BigInteger.Parse("111111111111111111111111101");
             //= 11111111111111111111111111111101;
@@ -91,6 +101,7 @@ namespace Practice_DSA
         private static void RecursionProblems()
         {
             Recursion rec = new Recursion();
+            rec.testCaseForPerfectSquare();
             rec.arrangeCoinTestCase();
             int maxV = int.MaxValue - 1;
             bool sta = rec.IsPowerOfTwo(1024);
@@ -109,6 +120,7 @@ namespace Practice_DSA
         private static void dynamicProgrammingProblems()
         {
             DP dp = new DP();
+            dp.testCaseForLargestRectangleArea();
             int ec = dp.TitleToNumberRec("FXSHRXW");
             string tit = dp.ConvertToTitle(676);
 
@@ -128,10 +140,12 @@ namespace Practice_DSA
         static void BackTrackingProblems()
         {
             //[["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
-            
+
 
             BackTrack bt = new BackTrack();
-            bt.testCaseForIslands();    
+            bt.testCaseLargestPerimeter();
+            bt.testCaseForSearchSuggestionSystem();
+            bt.testCaseForIslands();
             bt.testCaseForFindWords();
             char[][] ch = new char[][] {
                 new char[] {'A','B','C','E' },
