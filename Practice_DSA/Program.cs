@@ -5,6 +5,7 @@ using Practice_DSA.GoogleProblems.cs;
 using Practice_DSA.Graphs;
 using Practice_DSA.Heaps;
 using Practice_DSA.LinkedLists;
+using Practice_DSA.LRUCaches;
 using Practice_DSA.Maps;
 using Practice_DSA.Recursions;
 using Practice_DSA.SlidingWindows;
@@ -20,6 +21,7 @@ namespace Practice_DSA
     {
         static void Main(string[] args)
         {
+            LRUCacheTest test = new LRUCacheTest();
           //  googlePRoblems();
            // TrieProblems();
           //  HeapProblems();
@@ -36,7 +38,7 @@ namespace Practice_DSA
             //Recursions
           // RecursionProblems();
             //BackTracking
-           BackTrackingProblems();
+          // BackTrackingProblems();
             // DynamicProgramming();
           //   dynamicProgrammingProblems();
         }
