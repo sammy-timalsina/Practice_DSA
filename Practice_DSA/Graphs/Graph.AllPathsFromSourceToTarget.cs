@@ -38,34 +38,31 @@ namespace Practice_DSA.Graphs
         }
         public IList<IList<int>> AllPathsSourceTargetDFS(int[][] graph)
         {//https://leetcode.com/submissions/detail/793630650/
+          
             IList<IList<int>> vector = new List<IList<int>>();
             List<int> ds = new List<int>();
             bool[] visited = new bool[graph.Length];
-            AllPaths(graph, 0, vector, ds,visited, graph.Length-1);
+            int destination = graph.Length - 1;
+            int source = 0;
+            AllPaths(graph, source,destination, vector, ds,visited);
             return vector;
         }
-        private void AllPaths(int[][]graph, int source, IList<IList<int>> ans, List<int> ds,bool[] visited, int len)
-        {
-           if(!visited[source])
-            {
-                ds.Add(source);
-            }
-            visited[source] = true;
-            for (int i=0; i<graph[source].Length; i++)
-            {
-                if(visited[graph[source][i]])
-                {
-                    continue;
-                }
-               AllPaths(graph, graph[source][i], ans, ds, visited,len);
-               visited[graph[source][i]] = false;
-            }
-            if (graph[source].Length == 0)
+        private void AllPaths(int[][]graph, int source, int destination, IList<IList<int>> ans, List<int> ds,bool[] visited)
+        { 
+            ds.Add(source);
+            if (source == destination)
             {
                 ans.Add(new List<int>(ds));
+            }    
+            foreach(int item in graph[source])
+            {
+                if (visited[item])
+                    continue;
+                visited[item] = true;  
+                AllPaths(graph,item,destination,ans,ds,visited);
             }
             ds.Remove(source);
-            return;
+            visited[source] = false;
 
         }
     }

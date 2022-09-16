@@ -1,13 +1,17 @@
 ﻿using Practice_DSA.BackTrackings;
 using Practice_DSA.BinaryTrees;
 using Practice_DSA.DPs;
+using Practice_DSA.GoogleProblems.cs;
 using Practice_DSA.Graphs;
+using Practice_DSA.Heaps;
 using Practice_DSA.LinkedLists;
 using Practice_DSA.Maps;
 using Practice_DSA.Recursions;
 using Practice_DSA.SlidingWindows;
 using Practice_DSA.Stacks;
 using Practice_DSA.StringAndArrays;
+using Practice_DSA.Strings;
+using Practice_DSA.Tries;
 using System;
 
 namespace Practice_DSA
@@ -16,26 +20,56 @@ namespace Practice_DSA
     {
         static void Main(string[] args)
         {
-            graphProblems();
+          //  googlePRoblems();
+           // TrieProblems();
+          //  HeapProblems();
+           // graphProblems();
             // BinarySearch bs = new BinarySearch();
             //   bs.Search(new int[] { -8,-4,-3, 0, 3, 5, 9, 12,89 },1);
             // SlidingWindowProbs();
             //binary Tree problems
-            //  BinaryTreeProblems();
-            //LinkedListProblems();
+           //   BinaryTreeProblems();
+           // LinkedListProblems();
             // StackProblems();
-            //   StringProblems();
+             //  StringProblems();
             // MapProblems();
             //Recursions
-            // RecursionProblems();
+          // RecursionProblems();
             //BackTracking
-            // BackTrackingProblems();
+           BackTrackingProblems();
             // DynamicProgramming();
-            // dynamicProgrammingProblems();
+          //   dynamicProgrammingProblems();
+        }
+        private static void googlePRoblems()
+        {
+            GoogleProblem googleProblem = new GoogleProblem();
+        }
+        private static void TrieProblems()
+        {
+            cTrie cTrie = new cTrie();
+            cTrie.Insert("apple");
+            bool a1 = cTrie.Search("apple");
+            bool a2 = cTrie.Search("app");
+            bool  a3 =cTrie.StartsWith("app");
+            cTrie.Insert("app");
+            bool a4 =cTrie.Search("app");
+            Trie tr = new Trie();
+            tr.Insert("apple");
+            tr.Insert("car");
+            bool srch = tr.Search("apple");
+            tr.Insert("appl");
+            bool stat = tr.StartsWith("ap");
+
+        }
+        private static void HeapProblems()
+        {
+            Heap h = new Heap();
+            h.testCaseForHeapProblems();
         }
         private static void graphProblems()
         {
             Graph graph = new Graph();
+            graph.testCaseForFindKey();
             graph.testCaseForBFSOfGraph();
         }
         private static void SlidingWindowProbs()
@@ -49,6 +83,7 @@ namespace Practice_DSA
         {
 
             BinaryTree bt = new BinaryTree();
+            bt.testCaseForDiameterOfBinaryTree();
             // bt.testCaseForPathSum();
             bt.testCaseForMaxLevelSum();
             bt.TestCaseIsCousin();
@@ -58,7 +93,9 @@ namespace Practice_DSA
         private static void LinkedListProblems()
         {
             cLinkedList ll = new cLinkedList();
-
+            ll.testCaseForRev();
+            ll.testCaseForDelNthNode();
+            ll.testCaseForAddTwoLinkedList();
             ll.testCase2();
             ll.initializeTestCase();
         }
@@ -80,7 +117,11 @@ namespace Practice_DSA
 
         private static void StringProblems()
         {
+            cString cString = new cString();
+            cString.testcaseNeedleinAHayStack();
+            cString.AddBinary("1010", "1011");
             StringNArray str = new StringNArray();
+            
             str.testCaseToHex();
             str.testCaseForWordPattern();
             bool fs = str.IsIsomorphic("foo", "bar");
@@ -101,7 +142,9 @@ namespace Practice_DSA
         private static void RecursionProblems()
         {
             Recursion rec = new Recursion();
-            rec.testCaseForPerfectSquare();
+            rec.testCaseForSuperDigit();
+            rec.testCaseForProjectEulers();
+            rec.testCaseForNumSquares();
             rec.arrangeCoinTestCase();
             int maxV = int.MaxValue - 1;
             bool sta = rec.IsPowerOfTwo(1024);
@@ -120,6 +163,9 @@ namespace Practice_DSA
         private static void dynamicProgrammingProblems()
         {
             DP dp = new DP();
+            
+            dp.NthUglyNumber(1690);
+            dp.testCaseForMaxPRoduct();
             dp.testCaseForLargestRectangleArea();
             int ec = dp.TitleToNumberRec("FXSHRXW");
             string tit = dp.ConvertToTitle(676);
@@ -143,6 +189,14 @@ namespace Practice_DSA
 
 
             BackTrack bt = new BackTrack();
+            bt.testcaseSumII();
+            bt.testcaseforGameOFLife();
+            bt.testcaseForNQueen();
+            bt.testCaseForPondSize();
+            //bt.PermuteUnique(new int[] { 1, 1, 2 });
+            bt.testCaseForDroneFlightPlanner();
+            bt.testCaseDepartmentNos();
+            bt.testCaseForLexicograph();
             bt.testCaseLargestPerimeter();
             bt.testCaseForSearchSuggestionSystem();
             bt.testCaseForIslands();

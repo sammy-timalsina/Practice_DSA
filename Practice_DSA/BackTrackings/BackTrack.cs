@@ -8,6 +8,21 @@ namespace Practice_DSA.BackTrackings
 {
     public partial class BackTrack
     {
+        public void testcaseforGameOFLife()
+        {
+            //Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+            // Output:[[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+            int[][] board = new int[][] {
+                new int[] { 0, 1, 0 },
+                new int[] { 0, 0, 1 },
+                new int[] { 1, 1, 1 },
+                new int[] { 0, 0, 0 }
+            };
+            int[][] board2 = new int[][] { new int[] { 1, 1, 1 } };
+            int[][] board3 = new int[][] { new int[] { 1 }, new int[] { 1 }, new int[] { 1 } };
+            GameOfLife(board3);
+        }
+
         private string[] getBigStringArray()
         {
             string[] bigString = new string[]{"aaaaaaaaaa","aaaaaaaaab","aaaaaaaaac","aaaaaaaaad","aaaaaaaaae","aaaaaaaaaf",
