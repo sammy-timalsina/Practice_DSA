@@ -8,6 +8,25 @@ namespace Practice_DSA.LRUCaches
 {
     public class LRUCache
     {
+        internal class Node
+        {
+            public int key;
+            public int val;
+            public Node prev;
+            public Node next;
+            public Node()
+            {
+                this.prev = null;
+                this.next = null;
+            }
+            public Node(int key, int value)
+            {
+                this.key = key;
+                this.val = value;   
+                this.prev = null;
+                this.next = null;
+            }
+        }
         //Design a data structure that follows the constraints of a Least Recently Used(LRU) cache.
 
         //Implement the LRUCache class:
@@ -37,74 +56,60 @@ namespace Practice_DSA.LRUCaches
         //lRUCache.get(1);    // return -1 (not found)
         //lRUCache.get(3);    // return 3
         //lRUCache.get(4);    // return 4
-
-
-        List<int> ptr;
-        Dictionary<int, int> map;
         int size = 0;
+        Node head = new Node();
+        Node tail = new Node();
+        Dictionary<int, Node> map;
         public LRUCache(int capacity)
         {
             size = capacity;
-            ptr = new List<int>(capacity);
-            map = new Dictionary<int, int>(capacity);
+            map = new Dictionary<int, Node>();
+            head.next = tail;
+            tail.prev = head;
         }
 
         public int Get(int key)
         {
-            if(map.ContainsKey(key))
-            {
-                if(ptr.Contains(key))
-                {
-                    ptr.Remove(key);
-                    ptr.Add(key);
-                    return map[key];
-                }
-            }
             return -1;
         }
 
         public void Put(int key, int value)
         {
-            if(map.Count == 0)
+            Node node = null;
+            if (map.ContainsKey(key))
+               node = map[key];
+           if(node != null)
             {
-                ptr.Add(key);
-                map.Add(key, value);
-                return;
+                remove(node);
+                node.val = value;
+                add(node);
             }
-            else if(map.Count < size)
+           else
             {
-                if (map.ContainsKey(key))
+                if(map.Count == size)
                 {
-                    map[key] = value;
-                    if (ptr.Contains(key))
-                    {
-                        ptr.Remove(key);
-                    }
-                    ptr.Add(key);
+                    map.Remove(tail.prev.key);
+                    remove(tail.prev);
                 }
-                else
-                {
-                    ptr.Add(key);
-                    map.Add(key, value);
-                }
+                Node newNode = new Node(key,value);  
+                map.Add(key, newNode);
+                add(newNode);
             }
-            else if(map.Count == size)
-            {
-                if(map.ContainsKey(key))
-                {
-                    map[key] = value;
-                    ptr.Remove(key);
-                    ptr.Add(key);
-                }
-                else
-                {
-                    //remove least recently used
-                    map.Remove(ptr[0]);
-                    ptr.RemoveAt(0);
-                    map.Add(key, value);
-                    ptr.Add(key);
-                }
-            }
+        }
+        private void add (Node node)
+        {
+            Node headNext = head.next;
+            Node newNode = node;
+            newNode.next = headNext;
+            newNode.prev = null;
+            head = newNode;
+        }
+        private void remove(Node node)
+        {
+            Node nextNode = node.next;
+            Node prevNode = node.prev;
+            nextNode.prev = prevNode;
+            prevNode.next = nextNode;
         }
     }
     public class LRUCacheTest
@@ -118,9 +123,9 @@ namespace Practice_DSA.LRUCaches
             LRUCache cache = new LRUCache(2);
             cache.Put(1, 1);
             cache.Put(2, 2);
-            int val =cache.Get(1);
+            int val = cache.Get(1);
             cache.Put(3, 3);
-            int g1=cache.Get(2);
+            int g1 = cache.Get(2);
             cache.Put(4, 4);
             int g2 = cache.Get(1);
             int g3 = cache.Get(3);
@@ -146,9 +151,10 @@ namespace Practice_DSA.LRUCaches
             cache3.Put(1, 1);
             cache3.Put(2, 3);
             cache3.Put(4, 1);
-            int x =cache3.Get(1);
-            int y=cache3.Get(2);
+            int x = cache3.Get(1);
+            int y = cache3.Get(2);
 
         }
+
     }
 }

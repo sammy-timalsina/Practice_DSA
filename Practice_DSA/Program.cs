@@ -14,14 +14,46 @@ using Practice_DSA.StringAndArrays;
 using Practice_DSA.Strings;
 using Practice_DSA.Tries;
 using System;
+using System.Collections.Generic;
 
 namespace Practice_DSA
 {
     class Program
     {
+        private static int getLargestSum(List<List<int>> arr)
+        {
+            int x = 1 << 1;
+            int row = arr.Count;
+            int col = arr.Count;
+            int[,] dp = new int[row, col];
+            int max = int.MinValue; //int x = int.MaxValue;
+            for (int i = 0; i < arr.Count; i++)
+            {
+                for (int j = 0; j < arr[i].Count; j++)
+                {
+                    if (i == 0 && j == 0)
+                    {
+                        dp[i, j] = arr[i][j];
+                    }
+                    else if (i > 0 && j == 0)
+                    {
+                        dp[i, j] = arr[i][j] + dp[i - 1, j];
+                    }
+                    else if (i > 0 && j < col)
+                    {
+                        dp[i, j] = arr[i][j] + Math.Max(dp[i - 1, j - 1], dp[i - 1, j]);
+                    }
+                    max = Math.Max(max, dp[i, j]);
+                }
+            }
+            return max;
+        }
         static void Main(string[] args)
         {
-            LRUCacheTest test = new LRUCacheTest();
+            // your code goes here
+
+
+         //   LRUCacheTest test = new LRUCacheTest();
           //  googlePRoblems();
            // TrieProblems();
           //  HeapProblems();
@@ -30,17 +62,17 @@ namespace Practice_DSA
             //   bs.Search(new int[] { -8,-4,-3, 0, 3, 5, 9, 12,89 },1);
             // SlidingWindowProbs();
             //binary Tree problems
-           //   BinaryTreeProblems();
+            //  BinaryTreeProblems();
            // LinkedListProblems();
             // StackProblems();
-             //  StringProblems();
+            //  StringProblems();
             // MapProblems();
             //Recursions
           // RecursionProblems();
             //BackTracking
-          // BackTrackingProblems();
+           BackTrackingProblems();
             // DynamicProgramming();
-          //   dynamicProgrammingProblems();
+             //dynamicProgrammingProblems();
         }
         private static void googlePRoblems()
         {
@@ -85,6 +117,7 @@ namespace Practice_DSA
         {
 
             BinaryTree bt = new BinaryTree();
+            bt.testCaseForSumNumbers();
             bt.testCaseForDiameterOfBinaryTree();
             // bt.testCaseForPathSum();
             bt.testCaseForMaxLevelSum();
@@ -95,6 +128,7 @@ namespace Practice_DSA
         private static void LinkedListProblems()
         {
             cLinkedList ll = new cLinkedList();
+            ll.testCaseForAddNode();
             ll.testCaseForRev();
             ll.testCaseForDelNthNode();
             ll.testCaseForAddTwoLinkedList();
@@ -120,6 +154,8 @@ namespace Practice_DSA
         private static void StringProblems()
         {
             cString cString = new cString();
+            cString.testCaseForSumPrefixScore();
+            cString.testCaseWordBreak();    
             cString.testcaseNeedleinAHayStack();
             cString.AddBinary("1010", "1011");
             StringNArray str = new StringNArray();
@@ -165,7 +201,12 @@ namespace Practice_DSA
         private static void dynamicProgrammingProblems()
         {
             DP dp = new DP();
-            
+          //  dp.MinDistance("horse", "ros");
+           // dp.testCaseForHomeComingRobot();
+          //  dp.testcaseForDPMinInsertionAndDeletion();
+          dp.testCaseForConvertTime();
+          dp.testCaseforMaxValueOfCoins();
+            dp.testCaseForMinEffort();
             dp.NthUglyNumber(1690);
             dp.testCaseForMaxPRoduct();
             dp.testCaseForLargestRectangleArea();
@@ -191,6 +232,10 @@ namespace Practice_DSA
 
 
             BackTrack bt = new BackTrack();
+            // bt.testcaseForNQueen();
+            ///[-1,0,1,2,-1,-4,1,3,4,5]
+
+            bt.ThreeSumTest(new int[] { -1, 0, 1, 2, -1, -4, 1, 3, 4, 5 });
             bt.testcaseSumII();
             bt.testcaseforGameOFLife();
             bt.testcaseForNQueen();
