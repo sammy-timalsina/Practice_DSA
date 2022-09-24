@@ -60,7 +60,7 @@ namespace Practice_DSA
            // graphProblems();
             // BinarySearch bs = new BinarySearch();
             //   bs.Search(new int[] { -8,-4,-3, 0, 3, 5, 9, 12,89 },1);
-            // SlidingWindowProbs();
+          //   SlidingWindowProbs();
             //binary Tree problems
             //  BinaryTreeProblems();
            // LinkedListProblems();
@@ -68,7 +68,7 @@ namespace Practice_DSA
             //  StringProblems();
             // MapProblems();
             //Recursions
-          // RecursionProblems();
+         // RecursionProblems();
             //BackTracking
            BackTrackingProblems();
             // DynamicProgramming();
@@ -109,6 +109,7 @@ namespace Practice_DSA
         private static void SlidingWindowProbs()
         {
             SlidingWindow sliding = new SlidingWindow();
+            sliding.testCaseForFixedSizeProblems();
             double val = sliding.FindMaxAverage(new int[] { 1, 12, -5, -6, 50, 3 }, 4);
             // sliding.testCaseForMinSwapRequiredToGroupAll1Together();
         }
@@ -128,6 +129,7 @@ namespace Practice_DSA
         private static void LinkedListProblems()
         {
             cLinkedList ll = new cLinkedList();
+            ll.testReverseLinkedList();
             ll.testCaseForAddNode();
             ll.testCaseForRev();
             ll.testCaseForDelNthNode();
@@ -180,6 +182,7 @@ namespace Practice_DSA
         private static void RecursionProblems()
         {
             Recursion rec = new Recursion();
+            rec.testMyPow();
             rec.testCaseForSuperDigit();
             rec.testCaseForProjectEulers();
             rec.testCaseForNumSquares();
@@ -232,6 +235,8 @@ namespace Practice_DSA
 
 
             BackTrack bt = new BackTrack();
+            bt.testCaseForPAcificAtlantic();
+            bt.testCaseForValidSoduko();
             // bt.testcaseForNQueen();
             ///[-1,0,1,2,-1,-4,1,3,4,5]
 

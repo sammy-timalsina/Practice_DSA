@@ -8,6 +8,12 @@ namespace Practice_DSA.Recursions
 {
     public partial class Recursion
     {
+        public void testMyPow()
+        {
+            int sqrt = IsPerfectSquareHelper(123);
+            Dictionary<int,double> data = new Dictionary<int,double>();
+            double ans = getPow(1000,1000, data);
+        }
         public double MyPow(double x, int n)
         {
             bool flag = false;
@@ -51,6 +57,52 @@ namespace Practice_DSA.Recursions
             }
             return mul;
         }
-       
+        double getPow(double x, int n, Dictionary<int,double> ds)
+        {
+            if (n == 1) return x;
+            else if (n == -1) return 1 / x;
+            else if (n == 0) return 1;
+            if (ds.ContainsKey(n)) return ds[n];
+            int n1 = 0;
+            int n2 = 0;
+            if(n%2 == 0)
+            {
+                n1 = n / 2;
+                n2 = n1;
+            }
+            else
+            {
+                n1 = n / 2;
+                n2 = (n - n1);
+            }
+            double ans = getPow(x, n1, ds) * getPow(x, n2, ds);
+            if (!ds.ContainsKey(n1 + n2)) ds.Add(n1 + n2, ans);
+            return ans;
+        }
+        public int IsPerfectSquareHelper(int num)
+        {
+            char c = ' ';
+            int end = num / 2;
+            int start = 1;
+            int mid = 0;
+            int ans1 = 0;
+            int rem = 0;
+            while(start<=end)
+            {
+                mid = start + (end - start)/2;
+                if(mid == num/mid)
+                {
+                    rem = num % mid;
+                    ans1 = mid;
+                    break;
+                }
+                else if(mid > num/mid) end = mid - 1;
+                else if(mid < num/mid) start = mid + 1;
+            }
+            if (rem == 0 && ans1 > 0) return ans1;
+            else return -1;
+
+        }
+
     }
 }
