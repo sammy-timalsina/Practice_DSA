@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Practice_DSA.BinaryTrees
+﻿namespace Practice_DSA.BinaryTrees
 {
     public partial class BinaryTree
     {
@@ -42,12 +36,12 @@ namespace Practice_DSA.BinaryTrees
                 prev = prev / 10;
                 return;
             }
-            prev = prev * 10+ root.val;
-            dfs(root.left,ref count);
+            prev = prev * 10 + root.val;
+            dfs(root.left, ref count);
             dfs(root.right, ref count);
             prev = prev / 10;
 
         }
-        
+
     }
 }

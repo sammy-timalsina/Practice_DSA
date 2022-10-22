@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Practice_DSA.Tries
 {
-    public class cTrie
+    public partial class cTrie
     {
+        class TrieNode
+        {
+           public bool EOl;
+           public Dictionary<char, TrieNode> childrens = new Dictionary<char, TrieNode>();
+        }
         TrieNode root;
         public cTrie()
         {
@@ -16,65 +21,41 @@ namespace Practice_DSA.Tries
 
         public void Insert(string word)
         {
-            
-            TrieNode current = root;
-            int ind = 0;
-            foreach(char c in word)
+            TrieNode temp = root;         
+            for(int i=0;i<word.Length; i++)
             {
-                if(!current.children.ContainsKey(c))
+                if (!temp.childrens.ContainsKey(word[i]))
                 {
-                    current.children[c] = new TrieNode();    
+                    temp.childrens.Add(word[i], new TrieNode());
                 }
-                if (ind == word.Length - 1)
-                {
-                    current.IsEnd = true;
-                }
-                ind++;
-                current = current.children[c];
+               temp = temp.childrens[word[i]];
             }
+            temp.EOl = true; 
         }
         public bool Search(string word)
         {
-            TrieNode temp = root;
-            bool IsEndOfWord = false;
-            foreach (char s in word)
+            TrieNode dummy = root;
+            foreach(char c in word)
             {
-                if (temp.children.ContainsKey(s))
-                {
-                    IsEndOfWord = temp.IsEnd;
-                    temp = temp.children[s];
-                }
-                else
-                {
+                if(!dummy.childrens.ContainsKey(c))
                     return false;
-                }
+                dummy = dummy.childrens[c];
             }
-            if (IsEndOfWord)
-            {
-                return true;
-            }
-            return false;
+            return dummy.EOl;
         }
         public bool StartsWith(string prefix)
         {
-            TrieNode temp = root;
-            foreach (char s in prefix)
+            TrieNode dummy = root;
+            foreach(char c in prefix)
             {
-                if (temp.children.ContainsKey(s))
-                {
-                    temp = temp.children[s];
-                }
-                else
+                if(!dummy.childrens.ContainsKey(c))
                 {
                     return false;
                 }
+                dummy = dummy.childrens[c];
             }
             return true;
         }
     }
-    public class TrieNode
-    {
-        public Dictionary<char, TrieNode> children = new Dictionary<char, TrieNode>();
-        public bool IsEnd = false;
-    }
+
 }

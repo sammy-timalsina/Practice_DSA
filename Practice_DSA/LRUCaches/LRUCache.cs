@@ -70,46 +70,52 @@ namespace Practice_DSA.LRUCaches
 
         public int Get(int key)
         {
+            if(map.ContainsKey(key))
+            {
+                Node rem = map[key];
+                remove(rem);
+                add(rem);
+                return rem.val;
+            }
             return -1;
         }
 
         public void Put(int key, int value)
         {
-            Node node = null;
-            if (map.ContainsKey(key))
-               node = map[key];
-           if(node != null)
+
+            if(map.Count < size)
             {
-                remove(node);
-                node.val = value;
-                add(node);
+                Node temp = new Node(key, value);
+                add(temp);
+                map.Add(key, temp);
             }
-           else
+            else
             {
-                if(map.Count == size)
-                {
-                    map.Remove(tail.prev.key);
-                    remove(tail.prev);
-                }
-                Node newNode = new Node(key,value);  
-                map.Add(key, newNode);
-                add(newNode);
+             
+                map.Remove(tail.prev.key);
+                remove(tail.prev);
+                Node temp = new Node(key, value);           
+                add(temp);
+                if(!map.ContainsKey(key))
+                    map.Add(key, temp);
+
             }
         }
         private void add (Node node)
         {
-            Node headNext = head.next;
-            Node newNode = node;
-            newNode.next = headNext;
-            newNode.prev = null;
-            head = newNode;
+            Node nbr = head.next;
+            node.next = nbr;
+            node.prev = head;
+            nbr.prev = node;
+            head.next = node;
         }
         private void remove(Node node)
         {
-            Node nextNode = node.next;
-            Node prevNode = node.prev;
-            nextNode.prev = prevNode;
-            prevNode.next = nextNode;
+            Node prevNbr = node.prev;
+            Node nextNbr = node.next;
+            prevNbr.next = nextNbr;
+            nextNbr.prev = prevNbr;
+            
         }
     }
     public class LRUCacheTest
@@ -123,6 +129,8 @@ namespace Practice_DSA.LRUCaches
             LRUCache cache = new LRUCache(2);
             cache.Put(1, 1);
             cache.Put(2, 2);
+            cache.Put(3, 8);
+            cache.Put(5, 88);
             int val = cache.Get(1);
             cache.Put(3, 3);
             int g1 = cache.Get(2);

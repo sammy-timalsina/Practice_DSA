@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practice_DSA.Tries
+namespace Practice_DSA.LLDs.InterfacesWithCollections
 {
-    public partial class Trie
+    public class Customer
     {
     }
 }

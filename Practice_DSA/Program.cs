@@ -1,14 +1,19 @@
 ﻿using Practice_DSA.BackTrackings;
+using Practice_DSA.BinarySearches;
 using Practice_DSA.BinaryTrees;
+using Practice_DSA.Designs;
 using Practice_DSA.DPs;
 using Practice_DSA.GoogleProblems.cs;
 using Practice_DSA.Graphs;
+using Practice_DSA.Graphs.TopoplogicalSortings;
 using Practice_DSA.Heaps;
 using Practice_DSA.LinkedLists;
+using Practice_DSA.LLDs.InterfacesWithCollections;
 using Practice_DSA.LRUCaches;
 using Practice_DSA.Maps;
 using Practice_DSA.Recursions;
 using Practice_DSA.SlidingWindows;
+using Practice_DSA.Sortings;
 using Practice_DSA.Stacks;
 using Practice_DSA.StringAndArrays;
 using Practice_DSA.Strings;
@@ -50,29 +55,49 @@ namespace Practice_DSA
         }
         static void Main(string[] args)
         {
+            // SortedSet
+
             // your code goes here
-
-
-         //   LRUCacheTest test = new LRUCacheTest();
-          //  googlePRoblems();
-           // TrieProblems();
-          //  HeapProblems();
-           // graphProblems();
+            //  TopologicalSortingProblems();
+            //  LRUCacheTest test = new LRUCacheTest();
+            //  googlePRoblems();
+            //     SortingProblems();
+            //   TrieProblems();
+            // HeapProblems();
+              graphProblems();
             // BinarySearch bs = new BinarySearch();
             //   bs.Search(new int[] { -8,-4,-3, 0, 3, 5, 9, 12,89 },1);
-          //   SlidingWindowProbs();
+            //   SlidingWindowProbs();
             //binary Tree problems
-            //  BinaryTreeProblems();
-           // LinkedListProblems();
+             // BinaryTreeProblems();
+            //  LinkedListProblems();
             // StackProblems();
             //  StringProblems();
             // MapProblems();
             //Recursions
-         // RecursionProblems();
+            // RecursionProblems();
             //BackTracking
-           BackTrackingProblems();
+            //  BackTrackingProblems();
             // DynamicProgramming();
-             //dynamicProgrammingProblems();
+           // binarySearchProblems();
+             dynamicProgrammingProblems();
+        }
+
+        private static void binarySearchProblems()
+        {
+           BinarySearch bs = new BinarySearch();
+            bs.testCaseForCalender();
+        }
+
+        private static void SortingProblems()
+        {
+            cSorting sorting = new cSorting();
+            sorting.testCaseForMergeSort();
+        }
+        private static void TopologicalSortingProblems()
+        {
+            cTopoplogicalSorting ct = new cTopoplogicalSorting();
+            ct.testCaseForTopologicalSorting();
         }
         private static void googlePRoblems()
         {
@@ -81,28 +106,29 @@ namespace Practice_DSA
         private static void TrieProblems()
         {
             cTrie cTrie = new cTrie();
+            cTrie.TestCaseForWordDictionary();
             cTrie.Insert("apple");
             bool a1 = cTrie.Search("apple");
             bool a2 = cTrie.Search("app");
             bool  a3 =cTrie.StartsWith("app");
-            cTrie.Insert("app");
+            cTrie.Insert("bapp");
             bool a4 =cTrie.Search("app");
-            Trie tr = new Trie();
-            tr.Insert("apple");
-            tr.Insert("car");
-            bool srch = tr.Search("apple");
-            tr.Insert("appl");
-            bool stat = tr.StartsWith("ap");
+
 
         }
         private static void HeapProblems()
         {
             Heap h = new Heap();
+            h.NthUglyNumber(10);
+            h.testCaseForKLargest();
             h.testCaseForHeapProblems();
         }
         private static void graphProblems()
         {
             Graph graph = new Graph();
+            graph.testCaseFOrColorBorder(); 
+            graph.testCaseForCheapestFlight();
+            graph.testCaseForCycleDetect();
             graph.testCaseForFindKey();
             graph.testCaseForBFSOfGraph();
         }
@@ -118,6 +144,7 @@ namespace Practice_DSA
         {
 
             BinaryTree bt = new BinaryTree();
+            bt.testCaseForLOT();
             bt.testCaseForSumNumbers();
             bt.testCaseForDiameterOfBinaryTree();
             // bt.testCaseForPathSum();
@@ -141,6 +168,7 @@ namespace Practice_DSA
         private static void StackProblems()
         {
             cStack cs = new cStack();
+            cs.testCaseForRemoveKDigits();
             cs.testCaseForLargestRectangle();
             cs.testCaseForNearestGreaterToRight();
             cs.Push(2);
@@ -175,6 +203,7 @@ namespace Practice_DSA
         {
             cMap m = new cMap();
             //[0,1,2,2,3,0,4,2]
+            m.testCaseForWordBreak();
             m.ContainsNearbyDuplicate(new int[] { 1, 2, 3, 1, 2, 3 }, 2);
             m.RemoveElement(new int[] { 0, 1, 2, 2, 3, 0, 4, 2 }, 2);
         }
@@ -204,9 +233,13 @@ namespace Practice_DSA
         private static void dynamicProgrammingProblems()
         {
             DP dp = new DP();
+            dp.testCaseForSortByPowerValue();
+             dp.testCaseForNumOFPaths();
+            int ansss= dp.NumDecodings("1119111");
           //  dp.MinDistance("horse", "ros");
            // dp.testCaseForHomeComingRobot();
           //  dp.testcaseForDPMinInsertionAndDeletion();
+          dp.testCaseForLongestIncreaingPath();
           dp.testCaseForConvertTime();
           dp.testCaseforMaxValueOfCoins();
             dp.testCaseForMinEffort();
